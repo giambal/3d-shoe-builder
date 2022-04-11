@@ -5,7 +5,7 @@ import Main from "./components/Main";
 function App(props) {
   return (
     <div className="mainContainer">
-      {/* <Navbar />*/}
+      <Navbar />
       <Main />
     </div>
   );

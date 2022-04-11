@@ -30,11 +30,14 @@
 .canvasContainer {
   width: 70%;
   height: 80%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .colorContainer {
-  width: 60%;
   display: flex;
+  flex-direction: column;
   justify-content: space-around;
 }
 

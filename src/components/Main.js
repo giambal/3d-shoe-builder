@@ -22,19 +22,18 @@ function Main() {
   const [hovered, setHovered] = useState(null);
 
   const snap = useSnapshot(state);
-  console.log(state);
 
   return (
     <div className="bodyContainer">
       <div className="innerContainer">
         <div className="canvasContainer">
-          <div>
+          <div className="colorContainer">
             <HexColorPicker
               className="picker"
               color={snap.items[snap.current]}
               onChange={(color) => (state.items[snap.current] = color)}
             />
-            <h1>{snap.current}</h1>
+            <h1 style={{ color: snap.items[snap.current] }}>{snap.current}</h1>
           </div>
           <Canvas>
             <Suspense fallback={null}>
