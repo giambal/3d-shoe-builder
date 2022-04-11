@@ -1,22 +1,21 @@
 import { useRef } from "react";
 import { useGLTF, OrbitControls } from "@react-three/drei";
+import { useSnapshot } from "valtio";
 
-export default function Model({ scale, hovered, setHovered, state, snap }) {
+export default function ShoeModel({ state }) {
   const group = useRef();
   const { nodes, materials } = useGLTF("/shoe.gltf");
-  console.log(snap);
+  const snap = useSnapshot(state);
+
   return (
     <group
       ref={group}
       dispose={null}
-      scale={scale}
-      onPointerDown={(e) => {
-        e.stopPropagation();
-        setHovered(e.object.material.name);
-      }}
-      onPointerMissed={(e) => {
-        setHovered(null);
-      }}
+      scale={2}
+      onPointerMissed={() => (state.current = null)}
+      onPointerDown={(e) => (
+        e.stopPropagation(), (state.current = e.object.material.name)
+      )}
     >
       <mesh
         geometry={nodes.shoe.geometry}
