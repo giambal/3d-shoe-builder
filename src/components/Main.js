@@ -23,11 +23,19 @@ function Main() {
 
   const snap = useSnapshot(state);
 
+  const handleRetry = (e) => {
+    e.preventDefault();
+    for (const key in state.items) {
+      state.items[key] = "#ffffff";
+    }
+  };
+
   return (
     <div className="bodyContainer">
       <div className="innerContainer">
         <div className="canvasContainer">
           <div className="colorContainer">
+            <button onClick={handleRetry}>Undo changes</button>
             <HexColorPicker
               className="picker"
               color={snap.items[snap.current]}
